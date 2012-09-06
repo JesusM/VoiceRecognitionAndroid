@@ -2,6 +2,7 @@ package com.jesus.voicerecognitionsample;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -11,6 +12,7 @@ import android.content.pm.ResolveInfo;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
@@ -48,7 +50,10 @@ public class VoiceRecognitionActivity extends Activity implements
 							RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 					intent.putExtra(RecognizerIntent.EXTRA_PROMPT,
 							"Voice recognition Demo...");
-					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "en-US");
+					String defaultLanguage = Locale
+							.getDefault().toString();
+					intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale
+							.getDefault());
 
 					startActivityForResult(intent, REQUEST_CODE);
 
@@ -78,6 +83,19 @@ public class VoiceRecognitionActivity extends Activity implements
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_voice_recognition, menu);
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle item selection
+		switch (item.getItemId()) {
+		case R.id.menu_settings:
+			startActivity(new Intent(this, SettingsActivity.class));
+			return true;
+
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 
 	@Override
