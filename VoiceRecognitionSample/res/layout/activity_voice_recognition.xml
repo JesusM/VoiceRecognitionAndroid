@@ -2,11 +2,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".VoiceRecognitionActivity" ><ListView
+    tools:context=".VoiceRecognitionActivity" >
+
+    <LinearLayout
+        android:id="@+id/talk_linearlayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-20dp"
+        android:layout_marginRight="-20dp"
+        android:background="@drawable/ime_reactive"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/talk_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ime_btn_selector"
+            android:layout_margin="8dp" />
+    </LinearLayout>
+
+    <ListView
         android:id="@+id/listView1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/talk_button"
+        android:layout_above="@id/talk_linearlayout"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView1" >
     </ListView>
@@ -21,15 +42,5 @@
         android:layout_alignParentTop="true"
         android:text="Resultados"
         android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <Button
-        android:id="@+id/talk_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp"
-        android:text="Talk" />
 
 </RelativeLayout>
